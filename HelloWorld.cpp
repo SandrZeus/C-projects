@@ -16,10 +16,10 @@ int main()
         std::cin >> guess;
         tries++;
         if(guess > num){
-            std::cout << "Too high!";
+            std::cout << "Too high!\n";
         }
         else if(guess < num){
-            std::cout << "Too low!";
+            std::cout << "Too low!\n";
         }
         else{
             std::cout << "Correct! number of tries: " << tries << '\n';
