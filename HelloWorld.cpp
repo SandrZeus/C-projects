@@ -1,47 +1,30 @@
 #include <iostream>
-#include <cmath>
+#include <string>
+#include <ctime>
 
-int main(){
+int main()
+{
+    int num;
+    int guess;
+    int tries;
 
-    char op;
-    double num1;
-    double num2;
-    double result;
+    srand(time(NULL));
+    num = (rand() % 100) + 1;
 
-    std::cout << "******CALCULATOR********";
-
-    std::cout <<"Please enter either (+ - * /)";
-    std::cin >> op;
-
-    std::cout << "Please enter number 1: ";
-    std::cin >> num1;
-
-    std::cout << "Please enter number 2: ";
-    std::cin >> num2;
-
-    switch(op){
-        case '+':
-            result = num1 + num2;
-            std::cout << "Here's the result: " << result << '\n';
-            break;
-        case '-':
-            result = num1 - num2;
-            std::cout << "Here's the result: " << result << '\n';
-            break;
-        case '*':
-            result = num1 * num2;
-            std::cout << "Here's the result: " << result << '\n';
-            break;
-        case '/':
-            result = num1 / num2;
-            std::cout << "Here's the result: " << result << '\n';
-            break;
-        default:
-            std::cout << "That was not a valid response" << '\n';
-            break;
-    }
-
-    std::cout << "************************";
+    do{
+        std::cout << "Enter a guess between (1-100): ";
+        std::cin >> guess;
+        tries++;
+        if(guess > num){
+            std::cout << "Too high!";
+        }
+        else if(guess < num){
+            std::cout << "Too low!";
+        }
+        else{
+            std::cout << "Correct! number of tries: " << tries << '\n';
+        }
+    }while(guess != num);
 
     return 0;
 }
