@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 char getUserChoice();
 char getComputerChoice();
