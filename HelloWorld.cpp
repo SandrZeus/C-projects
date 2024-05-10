@@ -1,37 +1,78 @@
 #include <iostream>
+#include <iomanip>
 
-double square(double length);
-double cube(double length);
-std::string concatString(std::string string1, std::string string2);
-
+void showBalance(double balance);
+double deposit();
+double withdraw(double balance);
 
 int main()
 {
-    double length = 5.0;
-    double area = square(length);
-    double volume = cube(length);
-    
-    std::string firstName;
-    std::cout << "What is ur first name?: ";
-    std::cin >> firstName;
-    std::string lastName;
-    std::cout << "What is ur last name?: ";
-    std:: cin >> lastName;
-    std::string fullName = concatString(firstName, lastName);
-    
+    double balance = 0;
+    int choice = 0;
 
-    std::cout << "Area: " << area << "cm^2\n";
-    std::cout << "Volume: " << volume << "cm^3\n";
-    std::cout << fullName;
+    do{
+        std::cout << "Enter your choice:\n";
+        std::cout << "1. show balance\n";
+        std::cout << "2. desposit money\n";
+        std::cout << "3. withdraw money\n";
+        std::cout << "4. Exit\n";
+        std::cin >> choice;
+
+        switch(choice){
+            case 1: showBalance(balance);
+                    break;
+            case 2: balance += deposit();
+                    showBalance(balance);            
+                    break;
+            case 3: balance -= withdraw(balance);
+                    showBalance(balance);
+                    break;
+            case 4: std::cout << "Thanks for visiting\n";
+                    break;
+            default: std::cout << "Invalid choice\n";
+        }
+    }while(choice != 4);
 
     return 0;
 }
-double square(double length){
-    return length * length;
+
+void showBalance(double balance){
+    std::cout << "Yout balance is: $" << std::setprecision(2) << std::fixed << balance << '\n';
 }
-double cube(double length){
-    return length * length * length;
+double deposit(){
+
+    double amount = 0;
+
+    std::cout << "Enter amout to be deposited: ";
+    std::cin >> amount;
+
+    if(amount > 0){
+        return amount;
+    }
+    else{
+        std::cout << "Thats not a valid amount\n";
+        return 0;
+    }
+
 }
-std::string concatString(std::string string1, std::string string2){
-    return string1 + " " + string2;
+double withdraw(double balance){
+
+    double amount = 0;
+
+    std::cout << "Enter the amount to withdraw: ";
+    std::cin >> amount;
+
+    if(amount > balance){
+        std::cout << "Not possible\n";
+        return 0;
+    }
+
+    if(amount > 0){
+        return amount;
+    }
+    else{
+        std::cout << "Thats not a valid amount\n";
+        return 0;
+    }
+    
 }
