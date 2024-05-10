@@ -1,2 +1,2 @@
-# Cpp-projects
- just practicing c++
+# RockPaperScissors
+ Rock Paper Scissors game in C++
